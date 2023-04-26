@@ -1,2 +1,2 @@
 # Python
-[Python] 파이썬 공부하기
+"Life is too short, You need Python"
