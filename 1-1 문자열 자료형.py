@@ -1,5 +1,7 @@
 print("hello world")
 
+print("hello", "world", sep=) ## helloworld
+
 #문자열 indexing
 a="Life is too short, You need python"
 print(a)
