@@ -45,15 +45,16 @@ print(a)
 a= "Error is %d%%."%98
 print(a)
 
-##문자열 관련 함수
-#문자 개수 세기(count)
+##문자열 관련 함수---------------------------------------------------------------
+#문자 개수 반환(len())
+#문자 개수 세기(count())
 a="hobby"
 print(a.count('b'))
 
-#위치 알려주기 1(find)
+#위치 알려주기 1(find(), rfind())
 a = "Python is the best choice"
 print(a.find('b')) #0부터 세기때문에 b의 위치는 15가 아닌 14이다.
-print(a.find('k')) #존재하지않는다면 -1을 반환한다.
+print(a.rfind('k')) #존재하지않는다면 -1을 반환한다.
 
 #위치 알려주기 2(index)
 a = "Python is the best choice"
@@ -72,6 +73,14 @@ a.upper() #HI
 a="HI"
 a.lower() #hi
 
+#대소문자 한번에 바꾸기swapcase(()
+a="HIow"
+a.swapcase() #hiOW
+
+#공백 지우기(strip())
+str = " hello "
+print(str.strip()) #hello
+
 #왼쪽 공백 지우기(lstrip)
 a=" hi "
 a.lstrip() #'hi '
@@ -84,8 +93,9 @@ a.rstrip() #' hi'
 a= "Life is too short"
 a.replace("Life", "Your leg") #'Your leg is too short'
 
-#문자열 나누기(split)
+#문자열 나누기(split)***
 a="Life is too short"
 a.split() #공백(스페이스바, 엔터)을 기준으로 문자열 나눔
+pront(a.split())
 b= "a:b:c:d"
 b.split(':') #:기호를 기준으로 문자열 나눔
