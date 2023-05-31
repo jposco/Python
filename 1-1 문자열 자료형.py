@@ -1,3 +1,12 @@
+## input 문자입력받기
+name=input("너의 이름은 뭐야?")
+print(name)
+
+## input 숫자입력받기 int(), float()
+num1 = int(input()) #10
+num2 = int(input()) #20
+print(num1 + num2) #30
+
 print("hello world")
 
 print("hello", "world", sep=) ## helloworld
