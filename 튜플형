@@ -1,0 +1,36 @@
+#튜플 - 읽기전용 리스트
+t1 = (10,20,30)
+print(t1[0]) # 10
+del(t1)
+#하나의 값을 가진 튜플 생성하기
+t2=(10) #10
+t3=(10,) #(10,)
+t4=10, #(10,)
+
+#SET - 중복x, 순서x
+s1 = {1,2,3,4,5}
+s2 = set([1,2,3,4,5])
+s1 = set()
+apple = set('apple')
+print(apple) #{'e','p','a','l'}
+print(1 in s1) #True
+#set 요소 추가하기
+s1.add(6)
+#set 요소 삭제하기
+s1.remove(6)
+apple.clear()
+
+#딕셔너리
+dict1 = {1 : 'a', 2 : 'b', 3 : 'c'}
+dict1[4] = 'd' # 4 : 'd'
+del(dict1[4])
+print(dict1[1]) #'a' -> 없는값 출력시 error발생
+print(dict1.get(4)) -> 에러가 나지 않는다.
+print(dict1.keys()) #dict_keys([1, 2, 3])
+print(list(dict1.keys())) #[1, 2, 3]
+for i in dict1.keys():
+  print(i, dict1())
+  
+#map()
+num1, num2 = map(int, input().split())
+num1, num2 = input().split()
