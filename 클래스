@@ -66,7 +66,7 @@ class Korea(Country):
         #print(f"국가이름은 {self.__name}, 인구수는 {self.__population}, 수도는 {self.__capital}")
         print("자식 클래스의 메소드 입니다.")
         
-#클래스의 접근제어자
+#클래스의 접근제어자 관리
 class Movie:
     count = 0    
     def __init__(self, title, audience) :
@@ -90,9 +90,43 @@ print(movie1.get_title())
 
 print(movie1._audience)
 print(movie1.get_audience())
-        
+
+#클래스 상속의 오버라이딩
+class Country:
+    def __init__(self, name, population, capital):
+        self.__name = name
+        self.__population = population
+        self.__capital = capital
+
+    def show(self):
+        print("국가 클래스입니다")
+
+    def show_detail(self):
+        print("국가 클래스의 메소드 입니다.")
+
+    def get_name(self):
+        return  self.__name
+
+class Korea(Country):
+    def __init__(self, name, population, capital):
+        super().__init__(name, population, capital)
+
+    def show_name(self):
+        # print("국가 이름은: ", self.__name)
+        print("국가 이름은: ", self.get_name())
+
+    def show_detail(self):
+        #print(f"국가이름은 {self.__name}, 인구수는 {self.__population}, 수도는 {self.__capital}")
+        print("자식 클래스의 메소드 입니다.")
+
+country = Korea("대한민국", "5천만", "서울")
+country.show()
+print(country.get_name())
+country.show_name()
+country.show_detail()
+
 -------------------------------------실습---------------------------------------
-### 계산기 만들어보기
+### 클래스를 사용하여 계산기 만들어보기
 class FourCal:
     def __init__(self, x, y):
         self.x = x
@@ -223,3 +257,40 @@ class MinLimitCal(FourCal):
 cal = MinLimitCal()
 cal.sub(20)
 cal.sub(90)
+
+### 상속의 오버라이딩을 통한 실습 삼각형 사각형 넓이 구하기
+class shape:
+    def __init__(self, side_num, length, sero):
+        self.side_num = side_num 
+        self.base_length = length 
+        self.sero = sero
+        
+    def info(self):
+        print(f"변의 개수: {self.side_num} 밑변의 길이: {self.base_length}")
+        
+class rectangle(shape):
+    def __init__(self, side_num, length, sero):
+        super().__init__(side_num, length, sero)
+        
+    def area(self):
+        result = self.base_length * self.sero
+        print(f"사각형의 넓이: {result}") 
+        
+class triangle(shape):
+    def __init__(self, side_num, length, sero):
+        super().__init__(side_num, length, sero)
+        
+    def area(self):
+        result = (self.base_length * self.sero) / 2      
+        print(f"삼각형의 넓이: {result}") 
+while(1):
+    x = int(input("변의 개수: "))
+    y = int(input("밑변의 길이: "))
+    z = int(input("높이는? "))
+    
+    if x == 3:
+        T = triangle(x, y, z)
+        T.area()
+    elif x == 4:
+        R = rectangle(x, y, z)
+        R.area()
