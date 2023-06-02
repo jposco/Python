@@ -38,6 +38,60 @@ movie2=Movie("bossbaby2", 200)
 movie2.show_info() #제목은 bossbaby2, 관객수는 200
 print(movie1.count) #2
 
+#클래스의 상속 배우기
+class Country:
+    def __init__(self, name, population, capital):
+        self.__name = name
+        self.__population = population
+        self.__capital = capital
+
+    def show(self):
+        print("국가 클래스입니다")
+
+    def show_detail(self):
+        print("국가 클래스의 메소드 입니다.")
+
+    def get_name(self):
+        return  self.__name
+
+class Korea(Country):
+    def __init__(self, name, population, capital):
+        super().__init__(name, population, capital)
+
+    def show_name(self):
+        # print("국가 이름은: ", self.__name)
+        print("국가 이름은: ", self.get_name())
+
+    def show_detail(self):
+        #print(f"국가이름은 {self.__name}, 인구수는 {self.__population}, 수도는 {self.__capital}")
+        print("자식 클래스의 메소드 입니다.")
+        
+#클래스의 접근제어자
+class Movie:
+    count = 0    
+    def __init__(self, title, audience) :
+        self.__title = title
+        self._audience = audience 
+        Movie.count += 1
+
+    def get_title(self):
+        return self.__title
+
+    def set_title(self, title):
+        self.__title = title
+
+    def get_audience(self):
+        return self._audience
+
+movie1 = Movie("bossbaby", 100)
+print(movie1.get_title())
+movie1.set_title("보스베이비")
+print(movie1.get_title())
+
+print(movie1._audience)
+print(movie1.get_audience())
+        
+-------------------------------------실습---------------------------------------
 ### 계산기 만들어보기
 class FourCal:
     def __init__(self, x, y):
@@ -90,3 +144,82 @@ a.show_list()                  # 소금, 후추 설탕 출력
 a.enter_customer()             # 11 출력
 a.enter_customer()             # 12 출력
 a.show_info()
+
+###클래스로 캐릭터키우기
+class Character:
+    def __init__(self, name):
+        self.name = name
+        self.level = 0
+        self.item = 0
+    def level_up(self):
+        self.level+=1
+        print("현재 레벨:",self.level)
+    def gain_item(self):
+        self.item+=1
+        print("현재 아이템개수:",self.item)
+    def lose_item(self):
+        self.item-=1
+        print("현재 아이템개수:",self.item)
+    def info(self):
+        print(f"이름:{self.name}, level:{self.level}, 아이템개수:{self.item}")
+    def set_name(self,name):
+        self.name=name
+        print("새이름:",self.name)
+name = input("당신의 이름은?")
+c=Character(name)
+while(1):
+    command = int(input("다음행동"))
+    if command==1:
+        name = input("당신의 이름은?")
+        c.set_name(name)
+    elif command==2:
+        c.level_up()
+    elif command==3:
+        c.gain_item()
+    elif command==4:
+        c.lose_item()
+    elif command==5:
+        c.info()
+    elif command==0:
+        break
+    else:
+        print("유효한 입력이 아닙니다.")
+
+
+
+
+
+### 상속을 사용한 계산기 업그레이드
+class MoreFourCal(FourCal):
+    def pow(self):
+        result = self.x ** self.y
+        return result
+    
+x = int(input("첫 번째 숫자를 입력하세요: "))
+y = int(input("두 번째 숫자를 입력하세요: "))
+a = MoreFourCal(x, y)
+print(a.add())
+print(a.mul())
+print(a.sub())
+print(a.div())
+print(a.pow())
+
+### 상속의 오버라이딩을 이용한 실습
+class FourCal:
+    def __init__(self):
+        self.value = 100
+        
+    def sub(self, value):
+        self.value -=value
+class MinLimitCal(FourCal):
+    def sub(self, value): 
+        self.value -=value       
+        if self.value<=0:
+            print(0)
+        else:            
+            print(self.value)
+    
+    
+cal = MinLimitCal()
+cal.sub(20)
+cal.sub(90)
