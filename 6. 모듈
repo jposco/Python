@@ -1,0 +1,93 @@
+# 모듈 저장 및 불러오기 ver.1
+import calc_module
+
+num = calc_module.add(2, 3)
+print(num)
+
+num = calc_module.sub(2, 3)
+print(num)
+
+#모듈 저장 불러오기 ver.2
+import calc_module as calc
+
+num = calc.add(2, 3)
+print(num)
+
+num = calc.sub(2, 3)
+print(num)
+
+#모듈 저장 불러오기 ver.3
+from calc_module import add, sub
+
+num = add(2, 3)
+print(num)
+
+num = sub(2, 3)
+print(num)
+
+#import 모듈 몇가지 예제
+import math
+print(math.floor(4.5)) #(내림값)4
+print(math.ceil(4.5)) #(올림)5
+print(math.fabs(-4.5)) #(절댓값)4.5
+print(math.sqrt(4)) #(제곱)2
+print(math.factorial(4)) #(팩토리얼)24
+
+import random
+print(random.randint(1, 100)) # 1부터 100 사이의 정수 중 하나를 출력
+print(random.uniform(1.5, 100)) # 1.5부터 100 사이의 부동 소수점 값을 출력
+print(random.random()) # 0과 1 사이의 부동 소수점 값을 출력
+print(random.randrange(1, 100, 2)) # 1부터 100 사이의 홀수 중 하나를 출력
+
+random.choice(seq)
+#seq라는 시퀀스(리스트, 튜플 등)에서 임의의 요소를 선택하여 반환합니다.
+
+random.shuffle(seq)
+seq라는 시퀀스를 임의의 순서로 섞습니다. 시퀀스는 직접 변경됩니다.
+
+random.sample(population, k)
+population에서 중복되지 않는 k개의 요소를 임의로 선택하여 리스트로 반환합니다.
+
+random.seed(a=None, version=2)
+난수 생성기의 초기 상태를 설정합니다.
+a는 초기 시드(seed) 값이며, version은 알고리즘 버전을 지정합니다.
+
+random.getrandbits(k)
+k 비트의 임의의 정수를 반환합니다.
+
+random.choices(population, weights=None, cum_weights=None, k=1)
+population에서 weights 또는 cum_weights를 기반으로
+k개의 요소를 반복적으로 선택하여 리스트로 반환합니다.
+
+random.sample(population, k)
+population에서 중복되지 않는 k개의 요소를 임의로 선택하여 리스트로 반환합니다.
+
+# 랜덤 모듈 실습하기1 - 숫자4개뽑고 정렬하
+import random
+a=[]
+for i in range(4):
+    x= random.randint(1, 100)
+    a.append(x)
+a.sort()
+print(a)
+
+# 랜덤 모듈 실습하기2 - 숫자맞히기
+import random
+a=[]
+x= random.randint(1, 10)
+while(True):
+    gue=int(input("숫자를 맞혀라"))
+    if x==gue:
+        print("정답")
+        break
+    else :
+        print("때엥!")
+        
+#랜덤 모듈 실습하기3 - 로또번호 출력
+import random
+s = set()
+for i in range(6):
+    x= random.randint(1, 45)
+    s.add(x)
+bonus = random.randint(1, 45)
+print(f"{s} + {bonus}")
