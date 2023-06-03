@@ -52,3 +52,46 @@ for line in lines:
         break
 else:
     print("로그인 실패")
+    
+### 파일 쓰기 읽기 실습 아이디 비번입력 - 맞으면 로그인 - 전화번호입력
+f = open("./실습.txt", "w")
+for i in range(3):
+    data = input("이름 비밀번호: ") + "\n"
+    f.write(data)
+f.close()
+
+
+name = input("이름: ")
+pw = input("비번: ")
+same = f"{name} {pw}\n"
+
+file = open("./실습.txt", "r")
+lines = file.readlines()
+file.close()
+print(lines)
+
+for line in range(len(lines)):
+    if same == lines[line]:
+        print("로그인 성공")        
+        phone=input("전화번호")
+        append=f"{name} {pw} {phone}\n"
+        lines[line]=append
+        print(lines)
+        f = open("./실습.txt", "w")
+        for i in lines:
+            data=i
+            f.write(data)
+        f.close()
+        break 
+    else:
+        print("새로운 사람")
+        phone=input("전화번호")
+        append=f"{name} {pw} {phone}\n"
+        lines.append(append)
+        print(lines)
+        f = open("./실습.txt", "w")
+        for i in lines:
+            data=i
+            f.write(data) 
+        f.close()
+        break
