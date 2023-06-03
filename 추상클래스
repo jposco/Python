@@ -1,0 +1,82 @@
+#추상 클래스 - 추상 메소드
+from abc import *
+
+class Country(metaclass=ABCMeta):
+    def __init__(self, name):
+        self.__name = name
+
+    @abstractmethod
+    def show_detail(self): 
+        pass
+#추상 메서드로, 하위 클래스에서 반드시 구현되어야 합니다.
+#구현되지 않으면 오류가 발생합니다.
+
+    def get_name(self):
+        return self.__name
+
+class Korea(Country):
+    def __init__(self, name):
+        super().__init__(name)
+
+    def show_detail(self):
+        print("나라 이름은 : ", self.get_name())
+    
+
+country = Korea("한국")
+country.show_detail()
+
+### 추상클래스를 사용한 도형의 넓이구하기 실습
+from abc import *
+
+class Shape(metaclass=ABCMeta):
+    def __init__(self, num, base, high):
+        self.base = base
+        self.high = high
+        self.num = num
+
+    @abstractmethod
+    def area(self):
+        pass
+
+class Circle(Shape):
+    def __init__(self, num, base):
+        super().__init__(num, base, None)
+
+    def area(self):
+        result = 2 * 3.14 * self.base
+        print("원의 넓이:", result)
+
+class Rect(Shape):
+    def __init__(self, num, base, high):
+        super().__init__(num, base, high)
+        
+    def area(self):
+        result = self.high * self.base
+        print("사각형의 넓이:", result)
+
+class Tria(Shape):
+    def __init__(self, num, base, high):
+        super().__init__(num, base, high)
+        
+    def area(self):
+        result = self.base * self.high / 2
+        print("삼각형의 넓이:", result)  
+        
+while(1):
+    num =int(input("변의 개수: "))
+    if num == 1:
+        base =int(input("반지름의 길이: "))
+        C = Circle(num, base)
+        C.area()      
+    if num == 3:
+        base =int(input("밑변의 길이: "))
+        high =int(input("높이는? "))
+        T = Tria(num, base, high)
+        T.area()
+    if num == 4:
+        base =int(input("밑변의 길이: "))
+        high =int(input("높이는? "))
+        R = Rect(num, base, high)
+        R.area()
+    if num==0:
+        break
