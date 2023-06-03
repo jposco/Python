@@ -1,0 +1,54 @@
+#파일 쓰기 모드
+file = open("./test.txt", "w")
+
+file.write("hello world \n hello world \n")
+file.write("hello world3333")
+
+file.close()
+
+#파일 읽기 모드
+file=open("./test.txt","r")
+
+print(file.read())
+
+file.close()
+
+#파일 수정 모드
+f = open("./test.txt","w")
+f.write("안녕하세요")
+f.close()
+
+file3 = open("./test.txt","a")
+file3.write("\nhello world")
+file3.close()
+
+file=open("./test.txt","r")
+print(file.read())
+file.seek(0) #처음위치로
+print(file.readlines()) #[]
+file.close()
+#안녕하세요
+#hello world
+#['안녕하세요\n', 'hello world']
+
+### 파일 쓰기 읽기를 사용한 실습
+f = open("./실습.txt", "w")
+for i in range(3):
+    data = input("이름 비밀번호: ") + "\n"
+    f.write(data)
+f.close()
+
+name = input("이름: ")
+pw = input("비번: ")
+same = f"{name} {pw}\n"
+
+file = open("./실습.txt", "r")
+lines = file.readlines()
+file.close()
+
+for line in lines:
+    if same == line:
+        print("로그인 성공")
+        break
+else:
+    print("로그인 실패")
