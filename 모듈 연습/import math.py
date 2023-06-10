@@ -1,0 +1,27 @@
+shop=["반팔","청바지","이어폰","키보드"]
+
+try:
+    print(shop[2])
+    print(shop[10])
+except IndexError:
+    print("인덱스 범위를 벗어났습니다.")
+    print(shop[len(shop)-1])
+    
+try:
+    number=int(input("숫자 입력:"))
+except ValueError:
+    print("다시입력:")
+    #NameError
+    #ZeroDivisionError
+num =[1, 2, 3, 4]
+try:
+    print(who)
+    print(num[5]/0)
+except NameError:
+    print("존재하지 않는 식별자")
+except IndexError:
+    print("인덱스 범위 에러")
+except ZeroDivisionError:
+    print("0으로 나눌 수 없음")
+else:
+    print("예외 없음")
